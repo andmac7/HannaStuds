@@ -26,9 +26,21 @@
           <argument>
             <kind>1</kind>
             <string>randomize();
+totalTimer = 0;
 spawnTimer = 100;
 spawnDif = 20;
 spawnMod = 0;
+
+if (room == rLevel1 || room == rLevel2)
+{
+    spawnX = -32;
+    spawnY = 320;
+}
+if (room == rLevel3 || room == rLevel4)
+{
+    spawnX = -32;
+    spawnY = 512;
+}
 alarm[0] = spawnTimer;
 </string>
           </argument>
@@ -54,9 +66,11 @@ alarm[0] = spawnTimer;
             <kind>1</kind>
             <string>if (choose(0,1) == 0)
 {
-    instance_create(-32,320,oRaccoon);
+    instance_create(spawnX,spawnY,oRaccoon);
 }
-alarm[0] = spawnTimer-spawnMod+(random_range(-spawnDif,spawnDif));
+totalTimer = (spawnTimer+random_range(-spawnDif,spawnDif))-spawnMod;
+if (totalTimer &lt; 10) { totalTimer = 10; }
+alarm[0] = totalTimer;
 </string>
           </argument>
         </arguments>
@@ -79,7 +93,17 @@ alarm[0] = spawnTimer-spawnMod+(random_range(-spawnDif,spawnDif));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spawnMod = SCORE;
+            <string>spawnMod = floor(SCORE*0.75);
+
+if (instance_number(oRaccoon) == 0)
+{
+    instance_create(spawnX,spawnY,oRaccoon);
+}
+
+if (LIVES &lt;= 0)
+{
+    room_restart();
+}
 </string>
           </argument>
         </arguments>
@@ -127,11 +151,13 @@ LIVES = 3;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(room_width/2-32,64,"Rescued:" + string(SCORE));
+            <string>draw_text(room_width/2,64,"Rescued:" + string(SCORE));
 for (i = 0; i &lt; LIVES; i++)
 {
-    draw_sprite(sLife,0,room_width/2-48+(i*32),32);
+    draw_sprite(sLife,0,room_width/2-58+(i*(32+10)),32);
 }
+
+draw_text(0,0,totalTimer);
 </string>
           </argument>
         </arguments>

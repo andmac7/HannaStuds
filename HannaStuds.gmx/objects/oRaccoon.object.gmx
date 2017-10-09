@@ -29,6 +29,30 @@
 vspd = 0;
 grav = 0.2;
 jumpSpd = 10;
+playerBounce = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="2" enumb="1">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>playerBounce = false;
 </string>
           </argument>
         </arguments>
@@ -67,8 +91,19 @@ if (place_meeting(x,y+vspd,oSolid))
     vspd = 0;
 }
 
+if (place_meeting(x,y+vspd,oJumpBlock))
+{
+    vspd = 1 * -jumpSpd;
+}
+
 if (place_meeting(x,y+vspd,oPlayer))
 {
+    if (!playerBounce)
+    {
+        y = oPlayer.y-sprite_get_height(sprite_index);
+        playerBounce = true;
+        alarm[1] = 10;
+    }
     vspd = 1 * -jumpSpd;
 }
 
@@ -102,6 +137,7 @@ y += vspd;
 }
 else if (x &gt; 0)
 {
+    LIVES -= 1;
     instance_destroy();
 }
 </string>

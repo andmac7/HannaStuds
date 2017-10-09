@@ -10,6 +10,7 @@
     <sprite>sprites\sGround</sprite>
     <sprite>sprites\sRaccoon</sprite>
     <sprite>sprites\sLife</sprite>
+    <sprite>sprites\sJumpBlock</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -18,9 +19,15 @@
     <object>objects\oCtrl</object>
     <object>objects\oSolid</object>
     <object>objects\oRaccoon</object>
+    <object>objects\oCtrlSplash</object>
+    <object>objects\oJumpBlock</object>
   </objects>
   <rooms name="rooms">
-    <room>rooms\room0</room>
+    <room>rooms\rSplash</room>
+    <room>rooms\rLevel1</room>
+    <room>rooms\rLevel2</room>
+    <room>rooms\rLevel3</room>
+    <room>rooms\rLevel4</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
