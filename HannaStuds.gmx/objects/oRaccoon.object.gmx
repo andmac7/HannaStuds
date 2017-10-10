@@ -105,12 +105,12 @@ if (place_meeting(x,y+vspd,oJumpBlock))
 
 if (place_meeting(x,y+vspd,oPlayer))
 {
-    if (!playerBounce)
+    /*if (!playerBounce)
     {
         y = oPlayer.y-sprite_get_height(sprite_index);
         playerBounce = true;
         alarm[1] = 10;
-    }
+    }*/
     vspd = 1 * -jumpSpd;
 }
 

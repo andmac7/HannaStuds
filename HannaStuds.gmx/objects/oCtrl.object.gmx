@@ -41,7 +41,7 @@ if (room == rLevel3 || room == rLevel4)
     spawnX = -32;
     spawnY = 512;
 }
-if (room == rLevel5)
+if (room == rLevel5 || room == rLevel6)
 {
     spawnX = -32;
     spawnY = 448;
@@ -69,17 +69,27 @@ alarm[0] = spawnTimer;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (choose(0,1) == 0)
-{
-    instance_create(spawnX,spawnY,oRaccoon);
-}
-if (room == rLevel5)
+            <string>if (room != rLevel5 &amp;&amp; room != rLevel6)
 {
     if (choose(0,1) == 0)
     {
-        with(instance_create(room_width+32,spawnY,oRaccoon))
+        instance_create(spawnX,spawnY,oRaccoon);
+    }
+}
+if (room == rLevel5 || room == rLevel6)
+{
+    if (choose(0,1) == 0)
+    {
+        if (choose(0,1) == 0)
         {
-            dir = -1;
+            with(instance_create(room_width+32,spawnY,oRaccoon))
+            {
+                dir = -1;
+            }
+        }
+        else
+        {
+            instance_create(spawnX,spawnY,oRaccoon);
         }
     }
 }

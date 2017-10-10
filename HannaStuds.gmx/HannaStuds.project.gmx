@@ -11,6 +11,13 @@
     <sprite>sprites\sRaccoon</sprite>
     <sprite>sprites\sLife</sprite>
     <sprite>sprites\sJumpBlock</sprite>
+    <sprites name="Menu">
+      <sprite>sprites\sBtnPlay</sprite>
+      <sprite>sprites\sBtnClassic</sprite>
+      <sprite>sprites\sBtnCredits</sprite>
+      <sprite>sprites\sBtnQuit</sprite>
+      <sprite>sprites\sBtnLevel</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -19,16 +26,25 @@
     <object>objects\oCtrl</object>
     <object>objects\oSolid</object>
     <object>objects\oRaccoon</object>
-    <object>objects\oCtrlSplash</object>
     <object>objects\oJumpBlock</object>
+    <objects name="Menu">
+      <object>objects\oMenuCtrl</object>
+      <object>objects\oBtnPlay</object>
+      <object>objects\oBtnClassic</object>
+      <object>objects\oBtnCredits</object>
+      <object>objects\oBtnQuit</object>
+      <object>objects\oBtnLevel</object>
+    </objects>
   </objects>
   <rooms name="rooms">
-    <room>rooms\rSplash</room>
+    <room>rooms\rMenu</room>
+    <room>rooms\rLevelSelect</room>
     <room>rooms\rLevel1</room>
     <room>rooms\rLevel2</room>
     <room>rooms\rLevel3</room>
     <room>rooms\rLevel4</room>
     <room>rooms\rLevel5</room>
+    <room>rooms\rLevel6</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
