@@ -22,11 +22,6 @@
   <backgrounds name="background"/>
   <paths name="paths"/>
   <objects name="objects">
-    <object>objects\oPlayer</object>
-    <object>objects\oCtrl</object>
-    <object>objects\oSolid</object>
-    <object>objects\oRaccoon</object>
-    <object>objects\oJumpBlock</object>
     <objects name="Menu">
       <object>objects\oMenuCtrl</object>
       <object>objects\oBtnPlay</object>
@@ -35,6 +30,11 @@
       <object>objects\oBtnQuit</object>
       <object>objects\oBtnLevel</object>
     </objects>
+    <object>objects\oPlayer</object>
+    <object>objects\oCtrl</object>
+    <object>objects\oSolid</object>
+    <object>objects\oRaccoon</object>
+    <object>objects\oJumpBlock</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMenu</room>

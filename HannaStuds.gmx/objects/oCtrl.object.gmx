@@ -27,8 +27,8 @@
             <kind>1</kind>
             <string>randomize();
 totalTimer = 0;
-spawnTimer = 120;
-spawnDif = 20;
+spawnTimer = 115;
+spawnDif = 25;
 spawnMod = 0;
 
 if (room == rLevel1 || room == rLevel2)
@@ -36,10 +36,15 @@ if (room == rLevel1 || room == rLevel2)
     spawnX = -32;
     spawnY = 320;
 }
-if (room == rLevel3 || room == rLevel4)
+if (room == rLevel3)
 {
     spawnX = -32;
     spawnY = 512;
+}
+if (room == rLevel4)
+{
+    spawnX = -32;
+    spawnY = 320;
 }
 if (room == rLevel5 || room == rLevel6)
 {
