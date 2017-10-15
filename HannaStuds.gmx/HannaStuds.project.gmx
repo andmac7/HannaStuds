@@ -6,11 +6,6 @@
   <NewExtensions/>
   <sounds name="sound"/>
   <sprites name="sprites">
-    <sprite>sprites\sPlayer</sprite>
-    <sprite>sprites\sGround</sprite>
-    <sprite>sprites\sRaccoon</sprite>
-    <sprite>sprites\sLife</sprite>
-    <sprite>sprites\sJumpBlock</sprite>
     <sprites name="Menu">
       <sprite>sprites\sBtnPlay</sprite>
       <sprite>sprites\sBtnClassic</sprite>
@@ -18,6 +13,12 @@
       <sprite>sprites\sBtnQuit</sprite>
       <sprite>sprites\sBtnLevel</sprite>
     </sprites>
+    <sprite>sprites\sPlayer</sprite>
+    <sprite>sprites\sGround</sprite>
+    <sprite>sprites\sRaccoon</sprite>
+    <sprite>sprites\sLife</sprite>
+    <sprite>sprites\sJumpBlock</sprite>
+    <sprite>sprites\sSpawn</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -35,6 +36,7 @@
     <object>objects\oSolid</object>
     <object>objects\oRaccoon</object>
     <object>objects\oJumpBlock</object>
+    <object>objects\oSpawn</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rMenu</room>
@@ -45,6 +47,7 @@
     <room>rooms\rLevel4</room>
     <room>rooms\rLevel5</room>
     <room>rooms\rLevel6</room>
+    <room>rooms\rLevel7</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

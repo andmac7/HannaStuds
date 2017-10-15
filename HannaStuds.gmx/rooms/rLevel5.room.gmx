@@ -54,9 +54,11 @@
     <instance objName="oPlayer" x="672" y="608" name="inst_20F5D154" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oCtrl" x="0" y="0" name="inst_BBAF20D0" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oSolid" x="-64" y="544" name="inst_312A0A2D" locked="0" code="" scaleX="11.5" scaleY="8" colour="4294967295" rotation="0"/>
-    <instance objName="oSolid" x="1024" y="544" name="inst_B6EA04AF" locked="0" code="" scaleX="11" scaleY="9" colour="4294967295" rotation="0"/>
+    <instance objName="oSolid" x="1024" y="544" name="inst_B6EA04AF" locked="0" code="" scaleX="11.8709678649902" scaleY="6.5" colour="4294967295" rotation="0"/>
     <instance objName="oJumpBlock" x="304" y="528" name="inst_BB964907" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="oJumpBlock" x="1008" y="528" name="inst_E54DC3F2" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSpawn" x="-64" y="512" name="inst_159EA96E" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="oSpawn" x="1360" y="512" name="inst_4BFFADBC" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

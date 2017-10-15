@@ -30,27 +30,6 @@ totalTimer = 0;
 spawnTimer = 115;
 spawnDif = 25;
 spawnMod = 0;
-
-if (room == rLevel1 || room == rLevel2)
-{
-    spawnX = -32;
-    spawnY = 320;
-}
-if (room == rLevel3)
-{
-    spawnX = -32;
-    spawnY = 512;
-}
-if (room == rLevel4)
-{
-    spawnX = -32;
-    spawnY = 320;
-}
-if (room == rLevel5 || room == rLevel6)
-{
-    spawnX = -32;
-    spawnY = 448;
-}
 alarm[0] = spawnTimer;
 </string>
           </argument>
@@ -74,30 +53,29 @@ alarm[0] = spawnTimer;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (room != rLevel5 &amp;&amp; room != rLevel6)
+            <string>var spawnInst = instance_find(oSpawn, irandom(instance_number(oSpawn) - 1));
+
+if (choose(0,1) == 0)
 {
-    if (choose(0,1) == 0)
+    if (instance_exists(spawnInst))
     {
-        instance_create(spawnX,spawnY,oRaccoon);
-    }
-}
-if (room == rLevel5 || room == rLevel6)
-{
-    if (choose(0,1) == 0)
-    {
-        if (choose(0,1) == 0)
+        with (spawnInst)
         {
-            with(instance_create(room_width+32,spawnY,oRaccoon))
+            if (x &lt; room_width)
             {
-                dir = -1;
+                instance_create(x,y,oRaccoon);
+            }
+            else
+            {
+                with (instance_create(x,y,oRaccoon))
+                {
+                    dir = -1;
+                }
             }
         }
-        else
-        {
-            instance_create(spawnX,spawnY,oRaccoon);
-        }
     }
 }
+
 totalTimer = (spawnTimer+random_range(-spawnDif,spawnDif))-spawnMod;
 if (totalTimer &lt; 10) { totalTimer = 10; }
 alarm[0] = totalTimer;
@@ -127,7 +105,24 @@ alarm[0] = totalTimer;
 
 if (instance_number(oRaccoon) == 0)
 {
-    instance_create(spawnX,spawnY,oRaccoon);
+    var spawnInst = instance_find(oSpawn, irandom(instance_number(oSpawn) - 1));
+    if (instance_exists(spawnInst))
+    {
+        with (spawnInst)
+        {
+            if (x &lt; room_width)
+            {
+                instance_create(x,y,oRaccoon);
+            }
+            else
+            {
+                with (instance_create(x,y,oRaccoon))
+                {
+                    dir = -1;
+                }
+            }
+        }
+    }
 }
 
 if (LIVES &lt;= 0)
