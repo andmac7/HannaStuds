@@ -19,9 +19,16 @@
     <sprite>sprites\sLife</sprite>
     <sprite>sprites\sJumpBlock</sprite>
     <sprite>sprites\sSpawn</sprite>
+    <sprite>sprites\sGubbe</sprite>
+    <sprite>sprites\sGubbeFall</sprite>
+    <sprite>sprites\sGubbeFace</sprite>
+    <sprite>sprites\sGubbeFallFace</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>
+  <scripts name="scripts">
+    <script>scripts\draw_outline.gml</script>
+  </scripts>
   <objects name="objects">
     <objects name="Menu">
       <object>objects\oMenuCtrl</object>
