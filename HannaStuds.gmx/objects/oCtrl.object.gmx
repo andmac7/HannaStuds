@@ -27,10 +27,13 @@
             <kind>1</kind>
             <string>randomize();
 totalTimer = 0;
-spawnTimer = 137;
+spawnTimer = 220;
 spawnDif = 23;
 spawnMod = 0;
 alarm[0] = spawnTimer;
+
+firstBounceTime = 0;
+bounced = false;
 </string>
           </argument>
         </arguments>
@@ -63,7 +66,16 @@ if (choose(0,1) == 0)
         {
             if (x &lt; room_width)
             {
-                instance_create(x,y,oRaccoon);
+                var i = choose(0,1);
+                if (i == 0)
+                {
+                    instance_create(x,y,oRaccoon);
+                }
+                if (i == 1)
+                {
+                    instance_create(x,y,oRaccoon);
+                    instance_create(x-64,y,oRaccoon);
+                }
             }
             else
             {
@@ -101,7 +113,12 @@ alarm[0] = totalTimer;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>spawnMod = floor(SCORE*0.75);
+            <string>if (bounced == false)
+{
+    firstBounceTime++;
+}
+
+spawnMod = floor(SCORE*0.75);
 
 if (instance_number(oRaccoon) == 0)
 {
@@ -205,10 +222,26 @@ for (i = 0; i &lt; LIVES; i++)
     draw_sprite(sLife,0,room_width/2-58+(i*(32+10)),32);
 }
 
-draw_text(0,0,totalTimer);
+draw_text(0,0,string(totalTimer) + "#" + string(firstBounceTime));
 </string>
           </argument>
         </arguments>
+      </action>
+    </event>
+    <event eventtype="9" enumb="82">
+      <action>
+        <libid>1</libid>
+        <id>223</id>
+        <kind>0</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>0</useapplyto>
+        <exetype>1</exetype>
+        <functionname>action_current_room</functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
       </action>
     </event>
     <event eventtype="9" enumb="27">

@@ -6,7 +6,7 @@
   <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
-  <maskName>sRaccoon</maskName>
+  <maskName>sGubbeMask</maskName>
   <events>
     <event eventtype="0" enumb="0">
       <action>
@@ -25,7 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>dir = 1; // 1 = right, -1 = left
+            <string>//
+dir = 1; // 1 = right, -1 = left
 hspd = 2;
 vspd = 0;
 grav = 0.2;
@@ -36,6 +37,9 @@ faceSpr = sGubbeFace;
 image_speed = 0.5;
 draw_xscale = 1;
 draw_yscale = 1;
+imgColor = c_purple;
+timer = 0;
+firstFall = true;
 </string>
           </argument>
         </arguments>
@@ -81,15 +85,14 @@ draw_yscale = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x += hspd*dir;
+            <string>image_angle = imgAngle; // for mask to follow sprite rotation
+x += hspd*dir;
 
 if (vspd &lt; 10)
 {
     vspd += grav; 
 }
-// Ease the scale
-//draw_xscale = lerp(draw_xscale,1, .1);
-//draw_yscale = lerp(draw_yscale, 1, .1);
+
 if (place_meeting(x,y+vspd,oSolid)) // if on ground
 {
     faceSpr = sGubbeFace;
@@ -98,18 +101,36 @@ if (place_meeting(x,y+vspd,oSolid)) // if on ground
     {
         y += sign(vspd);
     }
+    if (!place_free(x,y-1))
+    {
+        y-=0.5;
+    }
     vspd = 0;
-    imgAngle = 0;
-    //draw_yscale = .75;
-    //draw_xscale = 1.25;
+    imgAngle = sin_oscillate(-5,5,timer);
+    timer+=10;
 }
 else // if in air
 {
+    if (firstFall)
+    {
+        if (instance_number(oRaccoon) &gt; 1)
+        {
+            for(var i = 0; i &lt; instance_number(oRaccoon); i++) 
+            {
+                var inst = instance_find(oRaccoon,i);
+                if (inst.firstFall == false &amp;&amp; (y &lt;= inst.y+32 &amp;&amp; y &gt;= inst.y-32) &amp;&amp; vspd &gt; 0 &amp;&amp; inst.vspd &gt; 0)
+                {
+                    show_message(string(y) + "/" + string(inst.y));
+                    instance_destroy();
+                }
+            }
+        }
+        firstFall = false;
+    }
+    
     faceSpr = sGubbeFallFace;
     sprite_index = sGubbeFall;
     imgAngle += 2*-dir;
-    //draw_yscale = 1.25;
-    //draw_xscale = .75;
 }
 
 if (place_meeting(x,y+vspd,oJumpBlock))
@@ -117,14 +138,14 @@ if (place_meeting(x,y+vspd,oJumpBlock))
     vspd = 1 * -jumpSpd;
 }
 
-if (place_meeting(x,y+vspd,oPlayer))
+if (place_meeting(x,y+vspd,oPlayer) &amp;&amp; !place_meeting(x,y+vspd,oSolid)) // if collision with player
 {
-    /*if (!playerBounce)
+    if (oCtrl.bounced == false)
     {
-        y = oPlayer.y-sprite_get_height(sprite_index);
-        playerBounce = true;
-        alarm[1] = 10;
-    }*/
+        oCtrl.spawnTimer = oCtrl.firstBounceTime*0.75;
+        oCtrl.bounced = true;
+    }
+    
     vspd = 1 * -jumpSpd;
 }
 
@@ -185,6 +206,8 @@ else if (y &gt; room_height)
             <kind>1</kind>
             <string>draw_outline(c_black);
 draw_sprite_ext(sprite_index,image_index,x,y,draw_xscale,draw_yscale,imgAngle,c_white,image_alpha);
+draw_sprite_ext(sprite_index,image_index,x,y,draw_xscale,draw_yscale,imgAngle,imgColor,0.2);
+image_blend = c_white;
 draw_sprite_ext(faceSpr,image_index,x,y,draw_xscale,draw_yscale,imgAngle,c_white,image_alpha);
 </string>
           </argument>

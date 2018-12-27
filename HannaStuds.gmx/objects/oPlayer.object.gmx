@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = mouse_x;
+            <string>x += (mouse_x - x) * 0.25;
 </string>
           </argument>
         </arguments>
